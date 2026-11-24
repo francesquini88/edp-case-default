@@ -6,7 +6,13 @@ sequenceDiagram
     participant A as FastAPI
 
     C->>A: GET /ping
-    A-->>C: 200 OK {"message": "pong"}
+    alt sem parâmetro fail
+        A-->>C: 200 OK {"message": "pong"}
+    else fail=400
+        A-->>C: 400 {"error": "requisição inválida simulada"}
+    else fail=500
+        A-->>C: 500 {"error": "erro interno do servidor"}
+    end
 ```
 
 Fluxo equivalente:
@@ -14,5 +20,11 @@ Fluxo equivalente:
 ```mermaid
 flowchart LR
     Cliente -->|GET /ping| FastAPI
-    FastAPI -->|200 + pong| Cliente
+    FastAPI --> Decisao{fail informado?}
+    Decisao -->|não| OK[200 + pong]
+    Decisao -->|400| BadRequest[400 + erro de requisição]
+    Decisao -->|500| InternalError[500 + erro interno]
+    OK --> Cliente
+    BadRequest --> Cliente
+    InternalError --> Cliente
 ```
