@@ -17,7 +17,7 @@ http://localhost:8000/ping
 Resposta esperada:
 
 ```json
-{"message":"hello world"}
+{"message":"pong"}
 ```
 
 Documentação automática da API:
@@ -97,6 +97,11 @@ python -m pytest
 ```text
 app/main.py       # aplicação FastAPI e endpoint /ping
 tests/test_ping.py # teste do endpoint
+docs/diagrams/     # diagramas Mermaid e documentação visual
 Dockerfile        # imagem da aplicação
 docker-compose.yml # execução local com Docker Compose
 ```
+
+## Diagrama do endpoint `/ping`
+
+O fluxo mínimo da requisição está em [`docs/diagrams/ping-flow.md`](docs/diagrams/ping-flow.md).
