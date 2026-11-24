@@ -78,6 +78,15 @@ uvicorn app.main:app --reload
 
 Teste em http://localhost:8000/ping.
 
+Para demonstrar os tratamentos de erro:
+
+```text
+http://localhost:8000/ping?fail=400  # requisição inválida
+http://localhost:8000/ping?fail=500  # erro interno
+```
+
+Sem o parâmetro `fail`, a resposta normal é `200` com `pong`.
+
 Para encerrar, pressione `Ctrl+C`. Para sair do ambiente virtual:
 
 ```bash
