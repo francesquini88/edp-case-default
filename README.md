@@ -25,11 +25,71 @@ Documentação automática da API:
 - http://localhost:8000/docs
 - http://localhost:8000/redoc
 
-## Executar o teste
+## Executar localmente sem Docker
+
+### 1. Criar o ambiente virtual
+
+Windows PowerShell:
+
+```powershell
+python -m venv .venv
+```
+
+Linux ou macOS:
 
 ```bash
-pip install -r requirements.txt
-pytest
+python3 -m venv .venv
+```
+
+### 2. Ativar o ambiente virtual
+
+Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+Linux ou macOS:
+
+```bash
+source .venv/bin/activate
+```
+
+Se o PowerShell bloquear a ativação, execute uma vez:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+### 3. Instalar as dependências
+
+Com o ambiente virtual ativo:
+
+```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+### 4. Iniciar a API
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Teste em http://localhost:8000/ping.
+
+Para encerrar, pressione `Ctrl+C`. Para sair do ambiente virtual:
+
+```bash
+deactivate
+```
+
+## Executar os testes
+
+Com o ambiente virtual ativo:
+
+```bash
+python -m pytest
 ```
 
 ## Estrutura
