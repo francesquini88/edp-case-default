@@ -25,6 +25,8 @@ Documentação automática da API:
 - http://localhost:8000/docs
 - http://localhost:8000/redoc
 
+O endpoint `/ping` está documentado no Swagger com a tag `health`, descrição dos parâmetros e respostas `200`, `400` e `500`.
+
 ## Executar localmente sem Docker
 
 ### 1. Criar o ambiente virtual
